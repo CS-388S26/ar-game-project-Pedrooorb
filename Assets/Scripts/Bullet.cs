@@ -1,12 +1,29 @@
+/**
+ * @file
+ *  Bullet.cs
+ * @author
+ *  Pedro Roman, 540001522, pedro.r@digipen.edu
+ * @date
+ *  26/03/2026
+ * @brief
+ *  Controls the bullet behaviour
+ * @copyright
+ *  Copyright (C) 2026 DigiPen Institute of Technology.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float force = 500f;   // strength of the shot
+    // strength of the shot
+    public float force = 500f;   
     private Rigidbody rb;
 
+    /**
+    * @brief Called when game starts
+    */
     void Start()
     {
         rb = GetComponent<Rigidbody>();

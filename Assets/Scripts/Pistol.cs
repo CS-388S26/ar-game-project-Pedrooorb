@@ -1,3 +1,15 @@
+/**
+ * @file
+ *  Pistol.cs
+ * @author
+ *  Pedro Roman, 540001522, pedro.r@digipen.edu
+ * @date
+ *  26/03/2026
+ * @brief
+ *  Controls the pistol and adds some animation
+ * @copyright
+ *  Copyright (C) 2026 DigiPen Institute of Technology.
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,14 +29,18 @@ public class Pistol : MonoBehaviour
 
     private Quaternion originalRotation;
     private Vector3 barrelguardStartPos;
-
+    /**
+    * @brief Called when game starts
+    */
     void Start()
     {
         //set original pos and rot
         originalRotation = transform.localRotation;
         barrelguardStartPos = barrelguard.localPosition;
     }
-
+    /**
+    * @brief Called every iteration
+    */
     void Update()
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -37,7 +53,9 @@ public class Pistol : MonoBehaviour
             TryShoot();
         }
     }
-
+    /**
+    * @brief Checks if possible to shoot again
+    */
     void TryShoot()
     {
         //check if able to shoot again
@@ -48,12 +66,16 @@ public class Pistol : MonoBehaviour
             lastShotTime = Time.time;
         }
     }
-
+    /**
+    * @brief Spawns bullet in the direction of our pistol
+    */
     void Shoot()
     {
         Instantiate(bullet, spawnpt.position, spawnpt.rotation);
     }
-
+    /**
+    * @brief Adds some cool animation to the pistol in order to give feedback when shooting
+    */
     IEnumerator Recoil()
     {
         //target rotation (tilt up)
