@@ -7,8 +7,6 @@ public class Pig : MonoBehaviour
     GameObject ScoreManagerobj;
     ScoreController Scorecon;
 
-    public float deathForce;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +14,9 @@ public class Pig : MonoBehaviour
         Scorecon = ScoreManagerobj.GetComponent<ScoreController>();
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        float impact = collision.relativeVelocity.magnitude;
-
-        if (impact > deathForce)
+        if (other.CompareTag("TriggerZone"))
         {
             Die();
         }
